@@ -46,20 +46,20 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jmeter.plugin.version>2.10</jmeter.plugin.version>
+        <jmeter.plugin.version>2.13</jmeter.plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>[3.8.1, 4.0.0)</version>
+            <version>[4.12]</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty.websocket</groupId>
             <artifactId>websocket-client</artifactId>
-            <version>9.1.1.v20140108</version>
+            <version>9.3.9.M1</version>
             <classifier>hybrid</classifier>
         </dependency>
         <dependency>
@@ -110,12 +110,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>[3.4.1, 4.0.0)</version>
+            <version>[3.5, 4.0.0)</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
-            <version>[2.3, 3.0)</version>
+            <version>[2.4.2, 3.0)</version>
         </dependency>
     </dependencies>
 </project>
