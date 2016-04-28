@@ -249,25 +249,8 @@ public class WebSocketSampler extends AbstractSampler implements TestStateListen
     }
 
     public String getServerPort() {
-        final String port_s = getPropertyAsString("serverPort", "0");
-        Integer port;
-        String protocol = getProtocol();
-        
-        try {
-            port = Integer.parseInt(port_s);
-        } catch (Exception ex) {
-            port = 0;
-        }
-        
-        if (port == 0) {
-            if ("wss".equalsIgnoreCase(protocol)) {
-                return String.valueOf(HTTPConstants.DEFAULT_HTTPS_PORT);
-            } else if ("ws".equalsIgnoreCase(protocol)) {
-                return String.valueOf(HTTPConstants.DEFAULT_HTTP_PORT);
-            }
-        }
-        return port.toString();
-    }
+        return getPropertyAsString("serverPort");
+  }
     
     public void setServerPort(String port) {
         setProperty("serverPort", port);
