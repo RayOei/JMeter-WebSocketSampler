@@ -11,5 +11,5 @@ Adaptation by AVG
 
 Bumped to 1.0.3
 - Bumped to Jmeter "2.13" support
-- Bumped to Jetty "9.3.9 M1" support
+- Bumped to Jetty "9.3.8" support
 - Bumped to jUnit "4.12" support
