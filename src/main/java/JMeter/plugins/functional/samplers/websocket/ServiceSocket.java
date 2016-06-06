@@ -5,6 +5,7 @@
 package JMeter.plugins.functional.samplers.websocket;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -91,7 +92,17 @@ public class ServiceSocket {
 			String length = " (" + frame.getPayloadLength() + " bytes)";
 			logMessage.append(" - Received frame #").append(messageCounter)
 					.append(length);
-			String frameTxt = new String(frame.getPayload().array());
+
+            ByteBuffer payload = frame.getPayload();
+			String frameTxt = null;
+            if (payload.hasArray()) {
+                frameTxt = new String(payload.array());
+            } else {
+                byte[] bytes = new byte[payload.remaining()];
+                payload.get(bytes);
+                frameTxt = new String(bytes);
+            }
+
 			addResponseMessage("[Frame " + (messageCounter++) + "]\n"
 					+ frameTxt + "\n\n");
 
