@@ -7,8 +7,7 @@ package JMeter.plugins.functional.samplers.websocket;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Deque;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +37,7 @@ public class ServiceSocket {
     protected final WebSocketSampler parent;
     protected WebSocketClient client;
     private static final Logger log = LoggingManager.getLoggerForClass();
-    protected Deque<String> responseBacklog = new LinkedList<String>();
+    protected Deque<String> responseBacklog = new ConcurrentLinkedDeque<>();
     protected Integer error = 0;
     protected StringBuffer logMessage = new StringBuffer();
     protected CountDownLatch openLatch = new CountDownLatch(1);
@@ -155,9 +154,8 @@ public class ServiceSocket {
         String responseMessage = "";
         
         //Iterate through response messages saved in the responseBacklog cache
-        Iterator<String> iterator = responseBacklog.iterator();
-        while (iterator.hasNext()) {
-            responseMessage += iterator.next();
+        for (String aResponseBacklog : responseBacklog) {
+            responseMessage += aResponseBacklog;
         }
 
         return responseMessage;
@@ -272,13 +270,17 @@ public class ServiceSocket {
         return connected;
     }
 
-    public void initialize() {
+    public void initialize(WebSocketSampler sampler) {
         logMessage = new StringBuffer();
         logMessage.append("\n\n[Execution Flow]\n");
         logMessage.append(" - Reusing exising connection\n");
         error = 0;
 
         this.closeLatch = new CountDownLatch(1);
+
+        this.responsePattern = new CompoundVariable(sampler.getResponsePattern()).execute();
+        this.disconnectPattern = new CompoundVariable(sampler.getCloseConncectionPattern()).execute();
+        initializePatterns();
     }
 
     private void addResponseMessage(String message) {

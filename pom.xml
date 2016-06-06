@@ -46,7 +46,7 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jmeter.plugin.version>2.13</jmeter.plugin.version>
+        <jmeter.plugin.version>3.0</jmeter.plugin.version>
     </properties>
 
     <dependencies>
