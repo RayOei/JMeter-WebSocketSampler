@@ -187,10 +187,15 @@ public class WebSocketSampler extends AbstractSampler implements TestStateListen
         }
         
         sampleResult.sampleEnd();
-        sampleResult.setSuccessful(isOK);
-        
-        String logMessage = (socket != null) ? socket.getLogMessage() : "";
-        sampleResult.setResponseMessage(logMessage + errorList);
+
+        // Removed as this results in unwanted logging in the jtl -
+        // TODO should be moved to default jmeter.log
+        //sampleResult.setSuccessful(isOK);
+        //String logMessage = (socket != null) ? socket.getLogMessage() : "";
+        //sampleResult.setResponseMessage(logMessage + errorList);
+
+        // Set general response
+        sampleResult.setResponseOK();
         return sampleResult;
     }
 
