@@ -9,6 +9,11 @@ Original here: the [Wiki pages](https://github.com/maciejzaleski/JMeter-WebSocke
 ============================================
 Adaptation by Ray Oei
 
+1.0.4
+- Fix receiving response 
+- Incorporated fixes by [elyrank]
+- Removed log information from sampleResults as it corrupts jtl
+
 Bumped to 1.0.3
 - Bumped to Jmeter "2.13" support
 - Bumped to Jetty "9.3.8" support
