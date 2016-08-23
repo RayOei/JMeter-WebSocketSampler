@@ -12,6 +12,7 @@ Adaptation by Ray Oei
 1.0.4
 - Fix receiving response 
 - Incorporated fixes by [elyrank]
+- Jmeter to "3.0" support
 - Removed log information from sampleResults as it corrupts jtl
 
 Bumped to 1.0.3
