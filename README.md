@@ -4,16 +4,18 @@ JMeter
 JMeter - WebSocket Sampler
 
 Based on the work of Maciej Zaleski. 
-Original here: the [Wiki pages](https://github.com/maciejzaleski/JMeter-WebSocketSampler/wiki) for instructions on how to install the plug-in.
+Original here (https://github.com/maciejzaleski/JMeter-WebSocketSampler)
 
 ============================================
 Adaptation by Ray Oei
 
-1.0.4
-- Fix receiving response 
+1.0.5
 - Incorporated fixes by [elyrank]
 - Jmeter to "3.0" support
 - Removed log information from sampleResults as it corrupts jtl
+
+1.0.4
+- Fix receiving response 
 
 Bumped to 1.0.3
 - Bumped to Jmeter "2.13" support
